@@ -1,5 +1,5 @@
 <?php
-	require __DIR__ . '/SourceQuery/SourceQuery.class.php';
+	require dirname(__FILE__) . '/SourceQuery/SourceQuery.class.php';
 	
 	// For the sake of this example
 	Header( 'Content-Type: text/plain' );
