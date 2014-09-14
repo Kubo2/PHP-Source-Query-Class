@@ -14,8 +14,8 @@ The class also allows you to query servers using RCON although this only works f
 ## Requirements
 Usage of this class requires:
 
-	* PHP langugage interpret of version >= _5.0.0_
-	* sockets enabled in PHP configuration (e.g. php.ini or .htaccess on Apache servers)
+* PHP langugage interpret of version >= _5.0.0_
+* sockets enabled in PHP configuration (e.g. php.ini or .htaccess on Apache servers)
 
 ## Supported Games
 * All multiplayer games released by Valve: *[Counter-Strike 1.6](http://store.steampowered.com/app/10/), [Counter-Strike: Global Offensive](http://store.steampowered.com/app/730/), [Team Fortress 2](http://store.steampowered.com/app/440/), etc...*
