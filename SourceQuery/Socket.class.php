@@ -27,14 +27,15 @@
 			$this->Buffer = $Buffer;
 		}
 		
-		public function Close( )
+		public function Close( ) // : boolean
 		{
-			if( $this->Socket )
+			// `is_resource()` bacause it was opened by `fsockopen(string, int, &int, &string, int) : resource`
+			if( !is_resource($this->Socket) || ($closed = FClose( $this->Socket )))
 			{
-				FClose( $this->Socket );
-				
-				$this->Socket = null;
+				$this->Socket = NULL;
 			}
+
+			return isset($closed) && $closed;
 		}
 		
 		public function Open( $Ip, $Port, $Timeout, $Engine )
