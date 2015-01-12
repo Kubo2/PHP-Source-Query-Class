@@ -10,7 +10,7 @@ header('Content-Type: text/plain');
 	/** The domain name or IP address of your Source Query game server. */
 	define('SQ_SERVER_ADDR', 'localhost');
 
-	/** The port which your SQ server is running on. */
+	/** The port which your Source Query game server is running on. */
 	define('SQ_SERVER_PORT', 27015);
 
 	/** Number of seconds SourceQuery instance will wait for server's response. You can keep default.  */
@@ -21,19 +21,18 @@ header('Content-Type: text/plain');
 }
 // Edit this <-
 
-	$Query = new SourceQuery( );
+$sourceQuery = new SourceQuery;
 	
-	try
-	{
-		$Query->Connect( SQ_SERVER_ADDR, SQ_SERVER_PORT, SQ_TIMEOUT, SQ_ENGINE );
-		
-		print_r( $Query->GetInfo( ) );
-		print_r( $Query->GetPlayers( ) );
-		print_r( $Query->GetRules( ) );
-	}
-	catch( Exception $e )
-	{
-		echo $e->getMessage( );
-	}
+try {
+	$sourceQuery->connect( SQ_SERVER_ADDR, SQ_SERVER_PORT, SQ_TIMEOUT, SQ_ENGINE );
 	
-	$Query->Disconnect( );
+	// an error occured if either one of following outputs "bool(false)"
+	var_dump($sourceQuery->getInfo());
+	var_dump($sourceQuery->getPlayers());
+	var_dump($sourceQuery->getRules());
+
+} catch(Exception $ex) {
+	printf("\nAn error occured, %s thrown: %s", get_class($ex), $ex->getMessage());
+}
+
+$sourceQuery->Disconnect( );
